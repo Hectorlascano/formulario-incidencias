@@ -141,23 +141,20 @@
         foto: '' // URL de la foto (se actualizará después de subirla)
       };
 
-// No subir la foto por ahora
-data.foto = ''; // Dejar la URL de la foto vacía
-
-        // Enviar datos a Google Apps Script
-        fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbzI5_2TRVjP1nEjgWGVefMfOU7HeqJGrtGLsGe3QD5qrBEQ4j6kEtuF1NgfIaJq9JS7/exec', {
-  method: 'POST',
-  body: JSON.stringify(data)
-})
-        .then(response => {
-          if (response.ok) {
-            alert('Incidencia reportada correctamente.');
-            document.getElementById('incidenciaForm').reset(); // Limpiar el formulario
-          } else {
-            alert('Error al reportar la incidencia.');
-          }
-        });
+      // Enviar datos a Google Apps Script
+      fetch('https://script.google.com/macros/s/AKfycbzI5_2TRVjP1nEjgWGVefMfOU7HeqJGrtGLsGe3QD5qrBEQ4j6kEtuF1NgfIaJq9JS7/exec', { // Reemplaza con la URL de tu aplicación web de Google Apps Script
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Incidencia reportada correctamente.');
+          document.getElementById('incidenciaForm').reset(); // Limpiar el formulario
+        } else {
+          alert('Error al reportar la incidencia.');
+        }
       });
+    });
   </script>
 </body>
 </html>
